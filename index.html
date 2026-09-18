@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#6d1f3f">
+<meta name="description" content="Akashdeep Singh & Akriti Dhiman wedding invitation">
+<title>Akashdeep & Akriti — Wedding Invitation</title>
+<style>
+:root{
+  --wine:#6d1f3f;
+  --gold:#c69b45;
+  --cream:#fff8ef;
+  --ink:#35221f;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:Georgia,"Times New Roman",serif;
+  background:
+    radial-gradient(circle at 20% 10%,rgba(198,155,69,.12) 0 2px,transparent 3px),
+    radial-gradient(circle at 80% 30%,rgba(109,31,63,.09) 0 2px,transparent 3px),
+    linear-gradient(135deg,#fffaf2,#f6e4df);
+  background-size:48px 48px,64px 64px,auto;
+  color:var(--ink);
+}
+a{text-decoration:none}
+.cover{
+  min-height:100vh;
+  display:grid;
+  place-items:center;
+  padding:22px;
+  position:relative;
+  overflow:hidden;
+}
+.envelope{
+  width:min(520px,94vw);
+  height:350px;
+  position:relative;
+  perspective:1200px;
+  cursor:pointer;
+}
+.back,.front,.flap{
+  position:absolute;
+  inset:0;
+  border-radius:24px;
+  border:1px solid rgba(198,155,69,.5);
+  box-shadow:0 18px 60px rgba(59,17,36,.18);
+}
+.back{
+  background:linear-gradient(145deg,#fff9ed,#ecd5af);
+}
+.front{
+  background:linear-gradient(145deg,#f7ead7,#ecd9bd);
+  clip-path:polygon(0 0,50% 54%,100% 0,100% 100%,0 100%);
+}
+.flap{
+  z-index:5;
+  background:linear-gradient(145deg,#faefe0,#e9cf9e);
+  clip-path:polygon(0 0,100% 0,50% 66%);
+  transform-origin:top center;
+  transition:transform 1s cubic-bezier(.2,.8,.2,1);
+}
+.envelope.open .flap{transform:rotateX(-170deg)}
+.seal{
+  position:absolute;
+  z-index:8;
+  left:50%;top:50%;
+  transform:translate(-50%,-50%);
+  width:82px;height:82px;
+  border-radius:50%;
+  display:grid;place-items:center;
+  background:radial-gradient(circle at 30% 30%,#d9b65f,#9a6713);
+  color:#fff8e7;
+  font-size:32px;
+  border:4px solid #f2dfb0;
+  box-shadow:0 10px 22px rgba(80,45,12,.24);
+  transition:.45s ease;
+}
+.envelope.open .seal{opacity:0;transform:translate(-50%,-50%) scale(.55)}
+.inner{
+  position:absolute;
+  z-index:3;
+  inset:25px;
+  background:rgba(255,251,241,.97);
+  border-radius:18px;
+  border:1px solid rgba(198,155,69,.38);
+  display:grid;
+  place-items:center;
+  text-align:center;
+  padding:28px;
+  transform:translateY(38px) scale(.92);
+  transition:1s cubic-bezier(.2,.8,.2,1);
+}
+.envelope.open .inner{transform:translateY(-18px) scale(1.02)}
+.eyebrow{color:var(--wine);letter-spacing:3px;font-size:13px;text-transform:uppercase}
+.names{font-size:clamp(34px,7vw,55px);line-height:1.05;color:#4e172b;margin:10px 0}
+.amp{color:var(--gold);font-style:italic}
+.date{color:var(--wine);font-weight:700;border:1px solid rgba(198,155,69,.55);padding:9px 16px;border-radius:999px}
+.hint{
+  position:absolute;z-index:9;bottom:16px;left:0;right:0;
+  text-align:center;color:var(--wine);font-size:13px;letter-spacing:2px;font-weight:700
+}
+
+#details{padding:60px 18px 90px}
+.wrap{max-width:920px;margin:auto}
+.heading{text-align:center;color:#4e172b;font-size:clamp(30px,5vw,44px);margin:0 0 10px}
+.sub{text-align:center;line-height:1.7;color:#735b55;max-width:720px;margin:0 auto 28px}
+.card{
+  background:rgba(255,252,247,.92);
+  border:1px solid rgba(198,155,69,.35);
+  box-shadow:0 12px 32px rgba(59,17,36,.10);
+  border-radius:24px;
+  padding:22px;
+  margin-bottom:20px;
+}
+.invitation-image{
+  display:block;
+  width:100%;
+  max-width:650px;
+  margin:0 auto;
+  border-radius:18px;
+  box-shadow:0 14px 38px rgba(59,17,36,.18);
+}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.event h3{margin:0 0 8px;color:#6d1f3f;font-size:26px}
+.event .when{font-weight:700;color:#3e211c;margin-bottom:14px}
+.row{margin:10px 0;line-height:1.55}
+.row b{color:#6d1f3f}
+.btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  padding:11px 15px;border-radius:999px;
+  border:1px solid rgba(109,31,63,.2);
+  font-weight:700;font-size:14px;
+}
+.primary{background:#6d1f3f;color:#fff;border-color:#6d1f3f}
+.secondary{background:#fff;color:#6d1f3f}
+.family{text-align:center}
+.phones{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:10px}
+.phone{font-size:19px;font-weight:700;color:#4e172b}
+footer{text-align:center;color:#81655f;padding:8px 20px 38px;font-size:13px}
+.petals{position:fixed;inset:0;pointer-events:none;z-index:50;overflow:hidden}
+.petal{
+  position:absolute;top:-20px;width:10px;height:14px;
+  border-radius:70% 30% 70% 30%;
+  background:rgba(109,31,63,.22);
+  animation:fall 6s linear forwards;
+}
+@keyframes fall{
+  to{transform:translate3d(var(--dx),105vh,0) rotate(540deg);opacity:0}
+}
+@media(max-width:720px){
+  .grid{grid-template-columns:1fr}
+  .envelope{height:330px}
+  .inner{inset:20px;padding:22px}
+}
+</style>
+</head>
+<body>
+<section class="cover">
+  <div class="envelope" id="envelope" tabindex="0" role="button" aria-label="Open wedding invitation">
+    <div class="back"></div>
+    <div class="inner">
+      <div>
+        <div class="eyebrow">Wedding Invitation</div>
+        <div class="names">Akashdeep <span class="amp">&</span> Akriti</div>
+        <p style="max-width:360px;line-height:1.6;color:#6f554f">
+          With the blessings of our families, we invite you to celebrate
+          our special day with us.
+        </p>
+        <div class="date">20–21 November 2026 • Nabha</div>
+      </div>
+    </div>
+    <div class="front"></div>
+    <div class="flap"></div>
+    <div class="seal">♥</div>
+    <div class="hint">TAP / CLICK TO OPEN</div>
+  </div>
+</section>
+
+<section id="details">
+  <div class="wrap">
+    <h1 class="heading">Akashdeep Singh &amp; Akriti Dhiman</h1>
+    <p class="sub">
+      Sdn. Amandeep Kaur &amp; S. Surinder Singh request the honour of your
+      gracious presence and blessings to grace the auspicious wedding ceremony
+      of their beloved son <b>Akashdeep Singh</b> with <b>Akriti Dhiman</b>.
+    </p>
+
+    <div class="card">
+      <img class="invitation-image" src="wedding-card.png" alt="Akashdeep Singh and Akriti Dhiman wedding invitation">
+    </div>
+
+    <div class="grid">
+      <article class="card event">
+        <h3>🌸 Shagun &amp; Jaggo</h3>
+        <div class="when">Friday, 20th November 2026</div>
+        <div class="row"><b>Shagun:</b> 11:00 AM</div>
+        <div class="row"><b>Jaggo:</b> 7:00 PM</div>
+        <div class="row"><b>Venue:</b> Their Residence, Near Railway Station, Bharat Nagar, Nabha</div>
+        <div class="btns">
+          <a class="btn primary" target="_blank" rel="noopener"
+             href="https://www.google.com/maps/search/?api=1&query=Near%20Railway%20Station%2C%20Bharat%20Nagar%2C%20Nabha">🗺️ Open Maps</a>
+        </div>
+      </article>
+
+      <article class="card event">
+        <h3>🐎 Barat</h3>
+        <div class="when">Saturday, 21st November 2026</div>
+        <div class="row"><b>Barat Timing:</b> 10:00 AM</div>
+        <div class="row"><b>Venue:</b> Vijay Trust, MK Road, Buran Gate, Nabha</div>
+        <div class="btns">
+          <a class="btn primary" target="_blank" rel="noopener"
+             href="https://www.google.com/maps/search/?api=1&query=Vijay%20Trust%2C%20MK%20Road%2C%20Buran%20Gate%2C%20Nabha">🗺️ Open Maps</a>
+        </div>
+      </article>
+    </div>
+
+    <div class="card family">
+      <h3 style="color:#6d1f3f">With love from the family</h3>
+      <p>Family Flower: <b>Sejal • Harinder • Khushmeet • Karan</b></p>
+      <p>With best compliments from <b>All Relatives &amp; Friends</b></p>
+    </div>
+
+    <div class="card family">
+      <h3 style="color:#6d1f3f">RSVP</h3>
+      <div>All Dhiman Family</div>
+      <div class="phones">
+        <a class="phone" href="tel:+919914580895">99145-80895</a>
+        <a class="phone" href="tel:+919779915009">97799-15009</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>Made with love for Akashdeep &amp; Akriti ❤️</footer>
+<div class="petals" id="petals"></div>
+
+<script>
+const envelope = document.getElementById('envelope');
+const details = document.getElementById('details');
+
+function openInvite(){
+  if(envelope.classList.contains('open')) return;
+  envelope.classList.add('open');
+  setTimeout(()=>{
+    details.scrollIntoView({behavior:'smooth',block:'start'});
+    petals();
+  },850);
+}
+
+envelope.addEventListener('click', openInvite);
+envelope.addEventListener('keydown', e=>{
+  if(e.key==='Enter' || e.key===' '){ e.preventDefault(); openInvite(); }
+});
+
+function petals(){
+  const box=document.getElementById('petals');
+  for(let i=0;i<24;i++){
+    const p=document.createElement('div');
+    p.className='petal';
+    p.style.left=Math.random()*100+'vw';
+    p.style.setProperty('--dx',((Math.random()-.5)*35)+'vw');
+    p.style.animationDelay=(Math.random()*.8)+'s';
+    p.style.animationDuration=(4+Math.random()*3)+'s';
+    box.appendChild(p);
+    setTimeout(()=>p.remove(),8000);
+  }
+}
+</script>
+</body>
+</html>
